@@ -1,0 +1,529 @@
+openapi: 3.0.3
+info:
+  title: Buxfer API
+  description: |-
+    Buxfer API based on their website.
+    
+    -----------  Attention! --------------
+    
+    THIS IS NOT AN OFFICIAL BUXFER.COM API
+
+    ----------- Attention! --------------
+  contact:
+    email: robbiegal@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+externalDocs:
+  description: Buxfer API website
+  url: https://www.buxfer.com/help/api
+servers:
+  - url: https://www.buxfer.com/api/
+
+
+tags:
+  - name: Login
+    description: Get Token
+    externalDocs:
+      description: Find out more
+      url: https://www.buxfer.com/help/api#login
+  - name: Transactions
+    description: Add, Edit, Delete Transactions
+    externalDocs:
+      description: Find out more
+      url: https://www.buxfer.com/help/api#transaction_add
+  - name: UploadStatement
+    description: UploadStatement
+  - name: GetData
+    description: Get data from website
+
+paths:
+  /login:
+    post:
+      tags:
+        - Login
+      summary: Login to website.
+      description: Login to website with user & password. get a token.
+      requestBody:
+        description: Login with user & password
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginData'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/LoginData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginData'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Invalid user & password
+        '404':
+          description: Invalid user & password
+        '405':
+          description: Validation exception
+
+
+  /accounts:
+    get:
+      tags:
+        - GetData
+      summary: Get Accounts information
+      description: Get Accounts information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accounts'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Accounts'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+  /loans:
+    get:
+      tags:
+        - GetData
+      summary: Get Loans information
+      description: Get Loans information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loans'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Loans'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+
+  /tags:
+    get:
+      tags:
+        - GetData
+      summary: Get Tags information
+      description: Get Tags information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tags'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Tags'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+
+  /budgets:
+    get:
+      tags:
+        - GetData
+      summary: Get Budgets information
+      description: Get Budgets information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budgets'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Budgets'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+
+
+  /reminders:
+    get:
+      tags:
+        - GetData
+      summary: Get Reminders information
+      description: Get Reminders information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reminders'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Reminders'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+
+  /groups:
+    get:
+      tags:
+        - GetData
+      summary: Get Groups information
+      description: Get Groups information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Groups'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Groups'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+
+
+  /contacts:
+    get:
+      tags:
+        - GetData
+      summary: Get Contacts information
+      description: Get Contacts information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contacts'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Contacts'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
+
+
+
+components:
+  schemas:
+    LoginData:
+      type: object
+      properties:
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+
+    LoginResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+        token:
+          type: string
+          example: 'XXXXXXXXXXXXXXX'
+
+    RequestToken:
+      type: object
+      properties:
+        token:
+          type: string
+          example: 'XXXXXXXXXXXXXXX'
+          
+          
+    RequestToken2:
+      type: array
+      items:
+        $ref: '#/components/schemas/RequestToken'
+
+    AccountData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'e7b9d4d7c6974ad1e9ee320ad302874d'      
+        name:
+          type: string
+          example: 'Wallet'    
+        bank:
+          type: string
+          example: 'Bank of America - Banking'    
+        balance:
+          type: number
+          example: -9543.16
+        currency:
+          type: string
+          example: "ILS"
+        lastSynced:
+          type: string
+          example: "2008-02-13 11:37:54"
+
+    Accounts:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/AccountData'
+          xml:
+            name: AccountData
+
+    LoanData:
+      type: object
+      properties:
+        entity:
+          type: string
+          example: 'Housemates'      
+        type:
+          type: string
+          example: 'group'    
+        balance:
+          type: number
+          example: -54.99
+        description:
+          type: string
+          example: "you owe"
+
+    Loans:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/LoanData'
+          xml:
+            name: LoanData
+
+    TagData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '080ed5cb2aa1aaf7986d2cc58c5d7f1f'      
+        name:
+          type: string
+          example: 'Home'    
+        parentId:
+          type: string
+          example: '7e4008367454d64628775faf78287b9b'
+
+    Tags:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/TagData'
+          xml:
+            name: TagData
+
+    BudgetData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '080ed5cb2aa1aaf7986d2cc58c5d7f1f'      
+        name:
+          type: string
+          example: 'Food'    
+        limit:
+          type: string
+          example: '205'    
+        remaining:
+          type: number
+          example:  -52.85
+        period:
+          type: string
+          example: '1 month'
+        currentPeriod:
+          type: string
+          example: 'Feb 08'
+        tags:
+          type: array
+          items:
+            type: string
+          example: 'eatingOut'
+        keywords:
+          type: array
+          items:
+            type: string
+          example: 'keyword1'
+
+    Budgets:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/BudgetData'
+          xml:
+            name: BudgetData
+
+    ReminderData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'ab6e5ef4c574eaac1b7c64223434713e'      
+        name:
+          type: string
+          example: 'AT&T bill'    
+        startDate:
+          type: string
+          example: '2008-11-08'              
+        period:
+          type: string
+          example: '1 month'              
+        amount:
+          type: number
+          example: 50          
+        accountId:
+          type: string
+          example: '8a0776e351983cd74bc014fde2f54935'
+
+    Reminders:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/ReminderData'
+          xml:
+            name: ReminderData
+
+    MemberData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '92fc6740165e7a1a7c578a916dc60444'      
+        name:
+          type: string
+          example: 'John'    
+        email:
+          type: string
+          example: 'john@gmail.com'              
+        balance:
+          type: number
+          example: 30.00           
+
+    GroupData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '74a31314a31ab59c938d6d18679ce773'      
+        name:
+          type: string
+          example: 'HouseMates'    
+        consolidated:
+          type: boolean
+          example: true           
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberData'
+
+
+    Groups:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/GroupData'
+          xml:
+            name: GroupData     
+
+    Contacts:
+      type: object
+      properties:
+        contacts:
+          type: array
+          xml:
+            wrapped: true
+          items:
+              $ref: '#/components/schemas/MemberData'
+              xml:
+                name: MemberData     
