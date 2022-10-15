@@ -255,6 +255,34 @@ paths:
         '405':
           description: Invalid Token
 
+  /transactions:
+    get:
+      tags:
+        - GetData
+      summary: Get Transactions information
+      description: Get Transactions information
+      parameters:
+      - in: query
+        name: token
+        schema:
+          type: string
+        description: token for getting data
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transactions'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Transactions'
+        '400':
+          description: Invalid Token
+        '404':
+          description: Invalid Token
+        '405':
+          description: Invalid Token
 
 
   /contacts:
@@ -341,9 +369,6 @@ components:
         currency:
           type: string
           example: "ILS"
-        lastSynced:
-          type: string
-          example: "2008-02-13 11:37:54"
 
     Accounts:
       type: array
@@ -526,4 +551,69 @@ components:
           items:
               $ref: '#/components/schemas/MemberData'
               xml:
-                name: MemberData     
+                name: MemberData
+                
+    TransactionData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '2d510c2696ec50d19a4e122129c455df'      
+        description:
+          type: string
+          example: 'Laptop'    
+        date:
+          type: string
+          example: '21 Feb'      
+        type:
+          type: string
+          example: 'expense'       
+        amount:
+          type: number
+          example: 2500       
+        expenseAmount:
+          type: number
+          example: 2500       
+        accountId:
+          type: string
+          example: 'e7b9d4d7c6974ad1e9ee320ad302874d'
+          optional: true
+        accountName:
+          type: string
+          example: 'Checking'
+        fromAccount:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountData'
+        toAccount:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountData'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagData'
+        tagNames:
+          type: array
+          items:
+            type: string
+            example: 'school'
+        status:
+          type: string
+          example: 'cleared'     
+        isFutureDated:
+          type: boolean
+          example: false
+        isPending:
+          type: boolean
+          example: false
+
+
+    Transactions:
+      type: array
+      xml:
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/TransactionData'
+          xml:
+            name: TransactionData    
