@@ -77,6 +77,13 @@ class TestGetDataApi(unittest.TestCase):
         """
         pass
 
+    def test_transactions_get(self):
+        """Test case for transactions_get
+
+        Get Transactions information  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

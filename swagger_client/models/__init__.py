@@ -32,3 +32,5 @@ from swagger_client.models.request_token import RequestToken
 from swagger_client.models.request_token2 import RequestToken2
 from swagger_client.models.tag_data import TagData
 from swagger_client.models.tags import Tags
+from swagger_client.models.transaction_data import TransactionData
+from swagger_client.models.transactions import Transactions

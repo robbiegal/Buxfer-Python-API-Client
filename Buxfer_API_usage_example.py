@@ -52,6 +52,44 @@ try:
 except ApiException as e:
     print("Exception when calling GetDataApi->tags_get: %s\n" % e)
 
+try:
+    # Get Transaction information
+    transaction_data = api_instance.transactions_get(token=token)
+    transactions_array=[]
+    for transaction in transaction_data["response"]["transactions"]:
+        #if "last_updated" in account.keys():
+        #    last_updated = account["last_updated"]
+        #else:
+        #    last_updated = None
+        curr_tags = transaction['tags']
+        curr_tag_names=transaction['tagNames']
+        curr_tag_elenets=[]
+        if type(curr_tags) ==str:
+                curr_tags = [curr_tags]
+        for curr_tag in curr_tags:
+            if curr_tag =="":
+                continue
+            curr_tag_element = next((tag for tag in tags_array if tag.name == curr_tag), None)
+            curr_tag_elenets.append(curr_tag_element)
+        if transaction["type"]=="transfer":
+            try:
+                curr_to_accout = next((account for account in accounts_array if account.name == transaction["toAccount"]['name']), None)
+            except KeyError:
+                curr_to_accout = None
+            try:
+                curr_from_accout = next((account for account in accounts_array if account.name == transaction["fromAccount"]['name']), None)
+            except KeyError:
+                curr_from_accout = None
+            curr_transaction = models.TransactionData(id = transaction["id"],description = transaction["description"],_date = transaction["date"],type = transaction["type"],amount = transaction["amount"],expense_amount = transaction["expenseAmount"],from_account = curr_from_accout, to_account=curr_to_accout,tags = curr_tags,tag_names = curr_tag_names,status = transaction["status"],is_future_dated = transaction["isFutureDated"],is_pending = transaction["isPending"])
+        else:
+            curr_transaction = models.TransactionData(id = transaction["id"],description = transaction["description"],_date = transaction["date"],type = transaction["type"],amount = transaction["amount"],expense_amount = transaction["expenseAmount"],account_id = transaction["accountId"],account_name = transaction["accountName"],tags = curr_tags,tag_names = curr_tag_names,status = transaction["status"],is_future_dated = transaction["isFutureDated"],is_pending = transaction["isPending"])
+        transactions_array.append(curr_transaction)
+    print("Transactions:")
+    for transaction in transactions_array:
+        print(transaction)
+except ApiException as e:
+    print("Exception when calling GetDataApi->transactions_get: %s\n" % e)
+
 
 try:
     # Get Budgets information

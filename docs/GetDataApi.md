@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**loans_get**](GetDataApi.md#loans_get) | **GET** /loans | Get Loans information
 [**reminders_get**](GetDataApi.md#reminders_get) | **GET** /reminders | Get Reminders information
 [**tags_get**](GetDataApi.md#tags_get) | **GET** /tags | Get Tags information
+[**transactions_get**](GetDataApi.md#transactions_get) | **GET** /transactions | Get Transactions information
 
 # **accounts_get**
 > Accounts accounts_get(token=token)
@@ -336,6 +337,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Tags**](Tags.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **transactions_get**
+> Transactions transactions_get(token=token)
+
+Get Transactions information
+
+Get Transactions information
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.GetDataApi()
+token = 'token_example' # str | token for getting data (optional)
+
+try:
+    # Get Transactions information
+    api_response = api_instance.transactions_get(token=token)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GetDataApi->transactions_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **str**| token for getting data | [optional] 
+
+### Return type
+
+[**Transactions**](Transactions.md)
 
 ### Authorization
 

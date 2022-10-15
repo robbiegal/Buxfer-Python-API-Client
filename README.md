@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *GetDataApi* | [**loans_get**](docs/GetDataApi.md#loans_get) | **GET** /loans | Get Loans information
 *GetDataApi* | [**reminders_get**](docs/GetDataApi.md#reminders_get) | **GET** /reminders | Get Reminders information
 *GetDataApi* | [**tags_get**](docs/GetDataApi.md#tags_get) | **GET** /tags | Get Tags information
+*GetDataApi* | [**transactions_get**](docs/GetDataApi.md#transactions_get) | **GET** /transactions | Get Transactions information
 *LoginApi* | [**login_post**](docs/LoginApi.md#login_post) | **POST** /login | Login to website.
 
 ## Documentation For Models
@@ -108,6 +109,8 @@ Class | Method | HTTP request | Description
  - [RequestToken2](docs/RequestToken2.md)
  - [TagData](docs/TagData.md)
  - [Tags](docs/Tags.md)
+ - [TransactionData](docs/TransactionData.md)
+ - [Transactions](docs/Transactions.md)
 
 ## Documentation For Authorization
 

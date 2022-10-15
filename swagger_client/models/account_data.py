@@ -32,7 +32,7 @@ class AccountData(object):
         'name': 'str',
         'bank': 'str',
         'balance': 'float',
-        'last_synced': 'str'
+        'currency': 'str'
     }
 
     attribute_map = {
@@ -40,16 +40,16 @@ class AccountData(object):
         'name': 'name',
         'bank': 'bank',
         'balance': 'balance',
-        'last_synced': 'lastSynced'
+        'currency': 'currency'
     }
 
-    def __init__(self, id=None, name=None, bank=None, balance=None, last_synced=None):  # noqa: E501
+    def __init__(self, id=None, name=None, bank=None, balance=None, currency=None):  # noqa: E501
         """AccountData - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
         self._bank = None
         self._balance = None
-        self._last_synced = None
+        self._currency = None
         self.discriminator = None
         if id is not None:
             self.id = id
@@ -59,8 +59,8 @@ class AccountData(object):
             self.bank = bank
         if balance is not None:
             self.balance = balance
-        if last_synced is not None:
-            self.last_synced = last_synced
+        if currency is not None:
+            self.currency = currency
 
     @property
     def id(self):
@@ -147,25 +147,25 @@ class AccountData(object):
         self._balance = balance
 
     @property
-    def last_synced(self):
-        """Gets the last_synced of this AccountData.  # noqa: E501
+    def currency(self):
+        """Gets the currency of this AccountData.  # noqa: E501
 
 
-        :return: The last_synced of this AccountData.  # noqa: E501
+        :return: The currency of this AccountData.  # noqa: E501
         :rtype: str
         """
-        return self._last_synced
+        return self._currency
 
-    @last_synced.setter
-    def last_synced(self, last_synced):
-        """Sets the last_synced of this AccountData.
+    @currency.setter
+    def currency(self, currency):
+        """Sets the currency of this AccountData.
 
 
-        :param last_synced: The last_synced of this AccountData.  # noqa: E501
+        :param currency: The currency of this AccountData.  # noqa: E501
         :type: str
         """
 
-        self._last_synced = last_synced
+        self._currency = currency
 
     def to_dict(self):
         """Returns the model properties as a dict"""
