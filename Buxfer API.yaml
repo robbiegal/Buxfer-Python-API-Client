@@ -369,6 +369,9 @@ components:
         currency:
           type: string
           example: "ILS"
+        lastUpdated:
+          type: string
+          example: "Jul 19 2022"
 
     Accounts:
       type: array

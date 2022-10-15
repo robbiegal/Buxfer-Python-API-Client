@@ -32,7 +32,8 @@ class AccountData(object):
         'name': 'str',
         'bank': 'str',
         'balance': 'float',
-        'currency': 'str'
+        'currency': 'str',
+        'last_updated': 'str'
     }
 
     attribute_map = {
@@ -40,16 +41,18 @@ class AccountData(object):
         'name': 'name',
         'bank': 'bank',
         'balance': 'balance',
-        'currency': 'currency'
+        'currency': 'currency',
+        'last_updated': 'lastUpdated'
     }
 
-    def __init__(self, id=None, name=None, bank=None, balance=None, currency=None):  # noqa: E501
+    def __init__(self, id=None, name=None, bank=None, balance=None, currency=None, last_updated=None):  # noqa: E501
         """AccountData - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
         self._bank = None
         self._balance = None
         self._currency = None
+        self._last_updated = None
         self.discriminator = None
         if id is not None:
             self.id = id
@@ -61,6 +64,8 @@ class AccountData(object):
             self.balance = balance
         if currency is not None:
             self.currency = currency
+        if last_updated is not None:
+            self.last_updated = last_updated
 
     @property
     def id(self):
@@ -166,6 +171,27 @@ class AccountData(object):
         """
 
         self._currency = currency
+
+    @property
+    def last_updated(self):
+        """Gets the last_updated of this AccountData.  # noqa: E501
+
+
+        :return: The last_updated of this AccountData.  # noqa: E501
+        :rtype: str
+        """
+        return self._last_updated
+
+    @last_updated.setter
+    def last_updated(self, last_updated):
+        """Sets the last_updated of this AccountData.
+
+
+        :param last_updated: The last_updated of this AccountData.  # noqa: E501
+        :type: str
+        """
+
+        self._last_updated = last_updated
 
     def to_dict(self):
         """Returns the model properties as a dict"""
